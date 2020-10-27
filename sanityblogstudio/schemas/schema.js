@@ -18,7 +18,7 @@ export default createSchema({
       It's an object with properties. */
     { 
       // Here, we have a record type - document, with name of 'Blog' in Sanity Studio's dashboard
-      name: 'portfolio', // name: name is a key to access data with
+      name: 'portfolio', // name: name is a key to access data with [_type == 'portfolio']
       type: 'document',
       title: 'Blog', // document name in Sanity Studio
       fields: [
