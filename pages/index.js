@@ -7,13 +7,12 @@ import AuthorIntro from 'components/AuthorIntro';
 import CardItemList from 'components/CardItemList';
 import CardItem from 'components/CardItem';
 
-export default function Home({ blogs, number }) {
+export default function Home({ blogs }) {
+  // debugger
   return (
     <PageLayout>
       <AuthorIntro />
       <hr />
-
-      <h1>{number}</h1>
 
       {/** A JavaScript value, usually an object or array, to be converted into JSON */}
       {/* JSON.stringify(blogs) */}
@@ -25,7 +24,13 @@ export default function Home({ blogs, number }) {
 
         {blogs.map(blog => (
           <Col md='4' key={blog.slug}>
-            <CardItem title={blog.title} subtitle={blog.subtitle}/>
+            <CardItem
+              title={blog.title}
+              subtitle={blog.subtitle}
+              date={blog.date}
+              image={blog.coverImage}
+              author={blog.author}
+            />
           </Col>
         ))}
       </Row>
@@ -33,7 +38,7 @@ export default function Home({ blogs, number }) {
   );
 }
 
-// Static page is created at Build Time 
+// Static page is created at Build Time
 // Build Time is for Production server when creating build dir - npm run build
 // npm start - to run production build or to server production app with no more compiling
 
@@ -44,7 +49,7 @@ export default function Home({ blogs, number }) {
 export const getStaticProps = async () => {
   // When we make request, we are always receiving the SAME html page in the Production env
   // same random number on every request in Static Page
-  const number = Math.random();
+  // const number = Math.random();
 
   // now we need to define a func to get data from sanity
   const blogs = await getAllBlogs();
@@ -57,7 +62,7 @@ export const getStaticProps = async () => {
       // key/value
       // message: 'Hello World!'
       blogs,
-      number
+      // number
     },
   };
 };
@@ -83,7 +88,7 @@ export const getStaticProps = async () => {
 //   };
 // };
 
-// Static page is created at build time 
+// Static page is created at build time
 // Faster, can be cached using CDN
 // When we make request, we are always receiving the SAME html page
 
