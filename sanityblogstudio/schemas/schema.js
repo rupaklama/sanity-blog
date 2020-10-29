@@ -43,19 +43,29 @@ export default createSchema({
         {
           name: 'date',
           title: 'Date',
-          type: 'datetime',
+          type: 'date',
+          // function to validate, field required
+          validation: (Rule) => {
+            return Rule.required()
+          }
         },
         {
           name: 'author',
           title: 'Author',
           type: 'reference',
           to: [{ type: 'admin' }], // author document  
+          validation: (Rule) => {
+            return Rule.required()
+          }
         },
         {
           name: 'slug',
           type: 'slug',
           // need to specify slug format 'my-first-blog' in Studio
           title: 'Slug',
+          validation: (Rule) => {
+            return Rule.required()
+          }
         },
       ],
     },

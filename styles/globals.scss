@@ -145,6 +145,10 @@ html, body {
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: bold;
+
+      a {
+        font-weight: 900;
+      }
     }
 
     &-item {
