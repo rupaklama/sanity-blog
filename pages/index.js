@@ -30,7 +30,11 @@ export default function Home({ blogs }) {
               date={blog.date}
               image={blog.coverImage}
               author={blog.author}
-              slug={blog.slug}
+              
+              link={{
+                href: '/blogs/[slug]',
+                as: `/blogs/${blog.slug}`
+              }} // passing link as prop
             />
           </Col>
         ))}

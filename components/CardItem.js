@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { Card } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
 
-const CardItem = ({ title, subtitle, date, image, author, slug }) => {
+const CardItem = ({ title, subtitle, date, image, author, link }) => {
   return (
     <Card className={`fj-card`}>
       <div className='card-body-wrapper'>
         <Card.Header className='d-flex flex-row'>
-
           {/** ?. returns undefined, use other value in chain here */}
           <img
             src={author?.avatar || 'https://via.placeholder.com/150'}
@@ -23,10 +22,7 @@ const CardItem = ({ title, subtitle, date, image, author, slug }) => {
           </div>
         </Card.Header>
         <div className='view overlay'>
-          <Card.Img
-            src={image}
-            alt='Card image cap'
-          />
+          <Card.Img src={image} alt='Card image cap' />
         </div>
         <Card.Body>
           <Card.Title className='card-main-title'>{title}</Card.Title>
@@ -34,10 +30,11 @@ const CardItem = ({ title, subtitle, date, image, author, slug }) => {
         </Card.Body>
       </div>
 
-      <Link href={`/blogs/${slug}`}>
-        <a className='card-button'>Read More</a>
-      </Link>
-      
+      {link && (
+        <Link {...link}>
+          <a className='card-button'>Read More</a>
+        </Link>
+      )}
     </Card>
   );
 };
